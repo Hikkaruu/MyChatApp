@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+@attribute [Authorize]
+
+@page "/home"
+
+<PageTitle>Home</PageTitle>
+
+
+
+<AuthorizeView>
+    <div class="card-header">
+        Welcome [@context.User.Claims.Where(f => f.Type == ClaimTypes.Name).Last().Value]!
+    </div>
+</AuthorizeView>
+
+

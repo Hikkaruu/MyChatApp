@@ -1,0 +1,81 @@
+﻿@using ChatAppBW.Client.ChatServices
+@using ChatAppBW.Repositories
+@using Microsoft.AspNetCore.Components.Authorization;
+@using System.Security.Claims
+@using Microsoft.AspNetCore.SignalR.Client
+@rendermode InteractiveServer
+@inject ChatRepository chatRepository
+@inject MyHubConnectionService myHubConnectionService
+
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">ChatAppBW</a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="flex-column">
+        <AuthorizeView>
+            <Authorized>
+
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/home" Match="NavLinkMatch.All">
+                        <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Home
+                    </NavLink>
+                </div>
+
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/chat-menu" Match="NavLinkMatch.All">
+                        <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Chat
+                    </NavLink>
+                </div>
+
+                <div class="nav-item px-3">
+                    <form action="account/logout" method="post">
+                        <AntiforgeryToken/>
+                        <button class="nav-link" @onclick=Logout>
+                            <span class="bi bi-arrow-bar-left-nav-menu"></span> Logout
+                        </button>
+                    </form>
+                </div>
+
+            </Authorized>
+
+            <NotAuthorized>
+
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                        <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Login
+                    </NavLink>
+                </div>
+
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/account/register" Match="NavLinkMatch.All">
+                        <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Register
+                    </NavLink>
+                </div>
+
+            </NotAuthorized>
+        </AuthorizeView>                    
+    </nav>
+</div>
+
+@code {
+    [CascadingParameter]
+    public Task<AuthenticationState> authenticationState { get; set; }
+    private HubConnection hubConnection;
+    protected override void OnInitialized() =>
+        hubConnection = myHubConnectionService.GetHubConnection();
+    
+
+    async Task Logout()
+    {
+        string id = ((await authenticationState).User).Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value;
+
+        await chatRepository.RemoveUserAsync(id);
+        await hubConnection!.SendAsync("RemoveUserAsync", id);
+    }
+}
+

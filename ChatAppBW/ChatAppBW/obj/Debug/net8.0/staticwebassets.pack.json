@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Hikkaru\\Desktop\\ChatProject\\MyChatApp\\ChatAppBW\\ChatAppBW\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ChatAppBW.bundle.scp.css",
+      "PackagePath": "staticwebassets\\ChatAppBW.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Hikkaru\\Desktop\\ChatProject\\MyChatApp\\ChatAppBW\\ChatAppBW\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\Hikkaru\\Desktop\\ChatProject\\MyChatApp\\ChatAppBW\\ChatAppBW\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Hikkaru\\Desktop\\ChatProject\\MyChatApp\\ChatAppBW\\ChatAppBW\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Hikkaru\\Desktop\\ChatProject\\MyChatApp\\ChatAppBW\\ChatAppBW\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ChatAppBW.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ChatAppBW.props",
+      "PackagePath": "build\\ChatAppBW.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ChatAppBW.props",
+      "PackagePath": "buildMultiTargeting\\ChatAppBW.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ChatAppBW.props",
+      "PackagePath": "buildTransitive\\ChatAppBW.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
